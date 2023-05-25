@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Inectable_Factory_Csharp.Payments.Enums;
 using Inectable_Factory_Csharp.Payments.Impl;
 
@@ -9,53 +5,33 @@ namespace Inectable_Factory_Csharp.Payments
 {
     public class PaymentFactory
     {
-        public static IPayment Create(PaymentMethod paymentMethod) 
+        public IPaymentService Create(IServiceCollection services)
         {
-            switch(paymentMethod) 
-            {
-                case PaymentMethod.CreditCard:
-                    return new CreditCardPayment();
-                    
-                case PaymentMethod.PayPal:
-                    return new PayPalPayment();
-                
-                case PaymentMethod.GooglePay:
-                    return new GooglePayPayment();
-
-                default:
-                    throw new NotSupportedException(
-                        $"{paymentMethod} is not currently supported as a payment method."
-                    );
-            }
-        }
-
-       public IPayment Create(IServiceCollection services) {
             // register all possible implementations of IPayment
-            services.AddScoped<CreditCardPayment>();
-            services.AddScoped<PayPalPayment>();
-            services.AddScoped<GooglePayPayment>();
+            services.AddScoped<CreditCardPaymentService>();
+            services.AddScoped<PayPalPaymentService>();
+            services.AddScoped<GooglePayPaymentService>();
 
-            services.AddTransient<Func<PaymentMethod, IPayment>>(serviceProvider => key =>
+            services.AddTransient<Func<PaymentMethod, IPaymentService>>(serviceProvider => key =>
             {
                 switch (key)
                 {
                     case PaymentMethod.CreditCard:
-                        return serviceProvider.GetService<CreditCardPayment>();
+                        return serviceProvider.GetService<CreditCardPaymentService>();
 
                     case PaymentMethod.PayPal:
-                        return serviceProvider.GetService<PayPalPayment>();
+                        return serviceProvider.GetService<PayPalPaymentService>();
 
                     case PaymentMethod.GooglePay:
-                        return serviceProvider.GetService<GooglePayPayment>();
+                        return serviceProvider.GetService<GooglePayPaymentService>();
 
                     default:
-                        return null;
+                        throw new NotSupportedException(
+                            $"{key} is not currently supported as a payment method."
+                        );
                 }
             });
-
             return null;
-       }
-
-
+        }
     }
 }
