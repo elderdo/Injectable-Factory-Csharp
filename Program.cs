@@ -3,7 +3,7 @@ using Inectable_Factory_Csharp.Payments;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var payment = new PaymentFactory().Create(builder.Services);
+IPaymentService payment = PaymentFactory.Create(builder.Services);
 builder.Services.AddTransient<IPaymentService>(x => payment);
 
 builder.Services.AddControllers();

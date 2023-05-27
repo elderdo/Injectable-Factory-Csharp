@@ -5,7 +5,7 @@ namespace Inectable_Factory_Csharp.Payments
 {
     public class PaymentFactory
     {
-        public IPaymentService Create(IServiceCollection services)
+        public static IPaymentService Create(IServiceCollection services)
         {
             // register all possible implementations of IPayment
             services.AddScoped<CreditCardPaymentService>();
