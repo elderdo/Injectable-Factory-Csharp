@@ -1,10 +1,9 @@
-using Inectable_Factory_Csharp.Payments.Enums;
+using Injectable_Factory_Csharp.Payments.Enums;
 
-namespace Inectable_Factory_Csharp.Payments.DTO
+namespace Injectable_Factory_Csharp.Payments.DTO;
+
+public class PaymentRequestDto
 {
-    public class PaymentRequestDto
-    {
-        public Double Amount { get; set; }
-        public PaymentMethod PaymentMethod { get; set; }
-    }
+    public Double Amount { get; set; }
+    public PaymentMethod PaymentMethod { get; set; }
 }

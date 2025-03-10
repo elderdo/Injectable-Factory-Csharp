@@ -1,4 +1,4 @@
-using Inectable_Factory_Csharp.Payments;
+using Injectable_Factory_Csharp.Payments;
 
 var builder = WebApplication.CreateBuilder(args);
 

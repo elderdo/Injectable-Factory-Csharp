@@ -1,9 +1,8 @@
-namespace Inectable_Factory_Csharp.Payments.Enums
+namespace Injectable_Factory_Csharp.Payments.Enums;
+
+public enum PaymentMethod
 {
-    public enum PaymentMethod
-    {
-        CreditCard,
-        PayPal,
-        GooglePay
-    }
+    CreditCard,
+    PayPal,
+    GooglePay
 }

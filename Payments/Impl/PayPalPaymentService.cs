@@ -1,10 +1,9 @@
-namespace Inectable_Factory_Csharp.Payments.Impl
+namespace Injectable_Factory_Csharp.Payments.Impl;
+
+public class PayPalPaymentService : IPaymentService
 {
-    public class PayPalPaymentService : IPaymentService
+    public string Pay(double amount)
     {
-        public string Pay(double amount)
-        {
-            return $"Successfully paid ${amount} to merchant using PayPal.";
-        }
+        return $"Successfully paid ${amount} to merchant using PayPal.";
     }
 }

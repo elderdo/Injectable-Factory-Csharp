@@ -1,7 +1,6 @@
-namespace Inectable_Factory_Csharp.Payments
+namespace Injectable_Factory_Csharp.Payments;
+
+public interface IPaymentService
 {
-    public interface IPaymentService
-    {
-        string Pay(Double amount);
-    }
+    string Pay(Double amount);
 }

@@ -1,4 +1,4 @@
-namespace Inectable_Factory_Csharp;
+namespace Injectable_Factory_Csharp;
 
 public class WeatherForecast
 {
